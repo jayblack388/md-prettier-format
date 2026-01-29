@@ -1,0 +1,65 @@
+{
+  "name": "md-prettier-format",
+  "displayName": "Markdown Prettier Format",
+  "description": "Format Markdown files using Prettier",
+  "version": "0.1.0",
+  "icon": "images/icon.png",
+  "publisher": "jayblack388",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0",
+    "node": ">=18.0.0"
+  },
+  "categories": ["Formatters"],
+  "keywords": [
+    "markdown",
+    "prettier",
+    "format",
+    "formatter"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jayblack388/md-prettier-format"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:markdown",
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "Markdown Prettier Format",
+      "properties": {
+        "md-prettier-format.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable the Markdown Prettier formatter"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --watch",
+    "package": "yarn compile && vsce package --no-yarn",
+    "commit": "cz"
+  },
+  "dependencies": {
+    "prettier": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.74.0",
+    "@vscode/vsce": "^2.22.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.19.0",
+    "ovsx": "^0.8.0",
+    "typescript": "^5.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
